@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Detection Results</h2>
+
+    <div class="alert alert-{% if result == 'legitimate' %}success{% else %}danger{% endif %}">
+        <h5 class="alert-heading">
+            {% if result == 'legitimate' %}
+                <i class="fas fa-check-circle"></i> Legitimate Content
+            {% else %}
+                <i class="fas fa-exclamation-triangle"></i> Phishing Detected!
+            {% endif %}
+        </h5>
+        <p>Confidence: {{ confidence }}%</p>
+    </div>
+
+    <div class="mb-4">
+        <h5>Input Details</h5>
+        <p><strong>Type:</strong> {{ input_type|upper }}</p>
+        {% if input_type == 'url' %}
+            <p><strong>URL:</strong> <a href="{{ content }}" target="_blank">{{ content }}</a></p>
+        {% else %}
+            <div class="card bg-light">
+                <div class="card-body">
+                    <pre>{{ content }}</pre>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Analysis Section -->
+    <div class="mb-4">
+        <h5>Analysis</h5>
+        {% if result == 'legitimate' %}
+            <p>Our analysis indicates this content appears to be legitimate.</p>
+        {% else %}
+            <p>Our analysis has detected signs of phishing in this content.</p>
+            <ul>
+                {% if input_type == 'email' %}
+                    <li>Suspicious sender address or content patterns</li>
+                    <li>Urgent language or requests for personal information</li>
+                {% elif input_type == 'text' %}
+                    <li>Suspicious keywords or phrases detected</li>
+                    <li>Patterns matching known phishing attempts</li>
+                {% elif input_type == 'url' %}
+                    <li>Suspicious domain characteristics</li>
+                    <li>URL structure matches known phishing patterns</li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+    <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+</div>
+{% endblock %}

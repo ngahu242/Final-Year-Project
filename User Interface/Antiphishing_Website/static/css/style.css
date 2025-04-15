@@ -1,0 +1,60 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+}
+
+.social-icons a {
+    font-size: 20px;
+}
+
+.card {
+    margin: 20px 0;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    padding: 10px 15px;
+}
+
+.navbar-nav .nav-item .btn-primary {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.navbar-nav .nav-item .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+.navbar-nav.ml-auto {
+    display: flex;
+    justify-content: flex-start; /* Align the normal links to the left */
+    width: auto;
+}
+
+.navbar-right {
+    margin-left: 560px;
+}
+.name{
+    margin-left: 20px;
+}
+
+.btn .btn-primary{
+    padding-left: 50px;
+}

@@ -1,0 +1,126 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection System</title>
+
+    <!-- Add proper title dynamically if needed -->
+    <meta name="description" content="A phishing detection system that analyzes emails, texts, and URLs for phishing attempts.">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS (If you have custom styles) -->
+    <link href="/static/css/style.css" rel="stylesheet">
+
+    <!-- Optional: Include a favicon -->
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <!-- Font Awesome CDN for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <!-- Navbar -->
+    <!-- Header -->
+<header class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <!-- Branding/Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+    <img src="{% static 'image/logo.png' %}" alt="Anti-Phishing" class="d-inline-block align-top rounded-circle" width="50" height="50">
+    <span class="ml-3 name" style="font-size: 1.5rem;">Anti-Phishing
+    </span> <!-- Adjusted margin and font size -->
+</a>
+
+        <!-- Toggler for mobile view -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">FAQ</a>
+                </li>
+            </ul>
+            <!-- Get Started button aligned to the right -->
+            <ul class="navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary text-white ml-3" href="#" role="button">Get Started</a>
+                </li>
+            </ul>
+        </div>
+</header>
+    <!-- Main Content Section -->
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+<footer class="bg-dark text-white pt-5 pb-3">
+    <div class="container">
+        <!-- First Row: Contact Information -->
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="text-uppercase">Contact Us</h5>
+                <p>
+                    <i class="fas fa-phone-alt"></i> +1 800-123-4567 <br>
+                    <i class="fas fa-envelope"></i> support@antiphishing.com <br>
+                    <i class="fas fa-map-marker-alt"></i> 1234 Cyber St., Security City, SC 56789
+                </p>
+            </div>
+
+            <!-- Second Row: Quick Links -->
+            <div class="col-md-4">
+                <h5 class="text-uppercase">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white">Home</a></li>
+                    <li><a href="#" class="text-white">About</a></li>
+                    <li><a href="#" class="text-white">Privacy Policy</a></li>
+                    <li><a href="#" class="text-white">Terms of Service</a></li>
+                    <li><a href="#" class="text-white">Help Center</a></li>
+                </ul>
+            </div>
+
+            <!-- Third Row: Social Media Links -->
+            <div class="col-md-4">
+                <h5 class="text-uppercase">Follow Us</h5>
+                <div class="social-icons">
+                    <a href="#" class="text-white mx-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white mx-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white mx-3"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-white mx-3"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <hr class="my-4">
+        <div class="text-center">
+            <p>&copy; 2025 Anti-Phishing System | All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- Bootstrap Bundle with Popper (necessary for Bootstrap features) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS (if needed) -->
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

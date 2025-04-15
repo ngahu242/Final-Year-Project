@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="display-4">Welcome to Our Anti-Phishing Detection System</h1>
+    <p class="lead">
+    <p class="lead" style="font-size: 15px">
+    Protect yourself from phishing attacks by detecting malicious content before it can cause harm. Phishing is one of the most common online threats, where attackers attempt to trick you into revealing personal information, such as login credentials, financial details, or sensitive data. By using our Anti-Phishing system, you can identify suspicious emails, websites, and messages, ensuring that you stay safe online and avoid falling victim to fraud or identity theft.
+    </p>
+
+    <!-- Display error message if content is empty -->
+    {% if error %}
+    <div class="alert alert-danger">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <!-- Phishing Check Form -->
+    <form method="POST" class="mt-4">
+        {% csrf_token %}
+
+        <!-- Input Type Selection -->
+        <div class="form-group">
+            <label for="input_type">Select Content Type</label>
+            <select class="form-control" name="input_type" required>
+                <option value="email">Email</option>
+                <option value="text">Text</option>
+                <option value="url">URL</option>
+            </select>
+        </div>
+
+        <!-- Content Input Field -->
+        <div class="form-group mt-5">
+            <label for="content">Enter Content</label>
+            <textarea class="form-control" name="content" rows="4" placeholder="Enter the email, text, or URL to check for phishing..." required></textarea>
+        </div>
+
+        <!-- Add margin-top and margin-bottom to the button -->
+        <button type="submit" class="btn btn-primary btn-lg mt-5 mb-5">Check for Phishing</button>
+    </form>
+
+    <!-- Advisory Content Below the Form -->
+        <div class="mt-1 p-3 bg-light shadow-sm rounded">
+            <!-- Title Centered -->
+            <h3 class="text-center text-primary mb-2">What is Phishing?</h3>
+
+            <!-- Text Aligned Left -->
+            <p class="text-left mt-4" style="font-size: 0.9rem; letter-spacing: 0.3px; text-spacing: 1px;">
+                Phishing is a type of cyber attack where attackers attempt to trick you into revealing personal information, such as usernames, passwords, credit card details, or other sensitive data.
+                These attacks often come in the form of fraudulent emails, text messages, or websites that appear to be legitimate but are designed to steal your data.
+            </p>
+
+            <!-- Title Centered -->
+            <h3 class="text-center text-primary mb-2">How to Protect Yourself?</h3>
+
+            <!-- Text Aligned Left for List -->
+            <ul class="list-group list-group-flush" style="font-size: 0.9rem; text-align: left;">
+                <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> Always verify the sender of an email before clicking on links or opening attachments.</li>
+                <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> Be cautious when visiting unfamiliar websites and avoid entering personal information on them.</li>
+                <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> Check for "https://" and a padlock icon in the browser's address bar when providing sensitive information online.</li>
+                <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> Use a robust email filtering system and keep your system's security software up-to-date.</li>
+                <li class="list-group-item"><i class="fas fa-check-circle text-success"></i> When in doubt, contact the company or person directly using known contact methods.</li>
+            </ul>
+
+            <!-- Text Aligned Left -->
+            <p class="text-left mt-4" style="font-size: 1rem;">
+                Our Anti-Phishing system is here to help you detect phishing attempts. Stay safe online!
+            </p>
+        </div>
+</div>
+{% endblock %}
