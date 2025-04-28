@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponse
-from .models import DetectionResult
-from .utils import PhishingDetector
+from .models import SMSDetectionResult, EmailDetectionResult, URLDetectionResult
+from detectors.utils import PhishingDetector
 import logging
 
 # Initialize the PhishingDetector instance
@@ -50,14 +49,27 @@ class HomeView(View):
             logger.error("Invalid confidence value returned from model.")
             return render(request, 'index.html', {'error': 'Invalid confidence value from model'})
 
-        # Save detection result to the database
+        # Save detection result to the appropriate database table
         try:
-            DetectionResult.objects.create(
-                input_type=input_type,
-                content=content,
-                result=result,
-                confidence=confidence
-            )
+            if input_type == 'email':
+                EmailDetectionResult.objects.create(
+                    content=content,
+                    result=result,
+                    confidence=confidence
+                )
+            elif input_type == 'text':
+                SMSDetectionResult.objects.create(
+                    content=content,
+                    result=result,
+                    confidence=confidence
+                )
+            elif input_type == 'url':
+                URLDetectionResult.objects.create(
+                    url=content,
+                    result=result,
+                    confidence=confidence
+                )
+
             logger.info(f"Detection result saved: {input_type} - {result} with confidence {confidence}")
         except Exception as e:
             logger.error(f"Error saving detection result: {str(e)}")
@@ -70,7 +82,6 @@ class HomeView(View):
             'result': result,
             'confidence': round(confidence * 100, 2)
         })
-
 
 class ResultsView(View):
     def get(self, request):
